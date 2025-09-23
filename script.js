@@ -17,9 +17,28 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-
 // Get a reference to the form element
 const newEntryForm = document.getElementById('new-entry-form');
+
+let currentUserId = null;
+
+// Listen for authentication state changes. This is the real-world way to handle user sessions.
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in. We can now safely get their ID.
+        currentUserId = user.uid;
+        console.log("Authentication state changed. User ID:", currentUserId);
+        
+    } else {
+        // User is signed out. We'll sign them in anonymously for this simple app.
+        signInAnonymously(auth).then(() => {
+            console.log("Signed in anonymously.");
+        }).catch((error) => {
+            console.error("Anonymous sign-in failed:", error);
+        });
+    }
+});
+
 
 // Add an event listener to the form's 'submit' event
 newEntryForm.addEventListener('submit', (event) => {
