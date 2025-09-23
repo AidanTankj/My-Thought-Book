@@ -4,14 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Thought Book</title>
+    <!-- (rel) relationship -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Tailwindcss CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 ><body>
     <div class="container-card">
         <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center">My Thought Book</h1>
-        <p Class="text-lg text-gray-500 mb-6 text-center">My personal space for all that goes</p>
-
+        <p class="text-lg text-gray-500 mb-6 text-center">My personal space for all that goes</p>
+        <form id="new-entry-form" class="space-y-4">
+            <div>
+                <!-- (for , id) label - input link identifier -->
+                <!-- (block) element display option occupying the full width -->
+                <label for="entry-title" class="block text-sm font-medium text-gray-700">Title</label>
+                <input type="text" id="entry-title" placeholder="A new thought or task..." class="input-field mt-1">
+            </div>
+            <div>
+                <label for="entry-content" class="block text-sm font-medium text-gray-700">Entry</label>
+                <textarea id="entry-content" rows="4" placeholder="Write your thoughts here..." class="input-field mt-1"></textarea>
+            </div>
+            <div class="flex justify-end space-x-2">
+                <button type="submit" class="btn btn-primary">Add Entry</button>
+                <button type="reset" class="btn btn-secondary">Clear</button>
+            </div>
+        </form>
     </div>
 </body>
