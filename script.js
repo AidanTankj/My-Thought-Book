@@ -22,15 +22,15 @@ const newEntryForm = document.getElementById('new-entry-form');
 
 let currentUserId = null;
 
-// Listen for authentication state changes. This is the real-world way to handle user sessions.
+// Listen for authentication state changes.
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        // User is signed in. We can now safely get their ID.
+        // User is signed in. 
         currentUserId = user.uid;
         console.log("Authentication state changed. User ID:", currentUserId);
         
     } else {
-        // User is signed out. We'll sign them in anonymously for this simple app.
+        // User is signed out. Anonymous sign-in.
         signInAnonymously(auth).then(() => {
             console.log("Signed in anonymously.");
         }).catch((error) => {
@@ -39,13 +39,31 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
+// Function to handle saving the entry to Firestore
+const saveEntry = async (entryData) => {
+    if (!currentUserId) {
+        console.error("Cannot save entry: No authenticated user.");
+        return;
+    }
+
+    try {
+        // 'log_entries' as the collection name. 
+        const collectionRef = collection(db, `users/${currentUserId}/log_entries`);
+        await addDoc(collectionRef, entryData);
+        console.log("Entry saved successfully.");
+        
+    } catch (error) {
+        console.error("Error saving entry:", error);
+    }
+};
+
 
 // Add an event listener to the form's 'submit' event
 newEntryForm.addEventListener('submit', (event) => {
     // Prevent the browser from refreshing the page when submit button pressed
     event.preventDefault();
 
-    // Get the values from the form
+    // Get values from the form
     const title = document.getElementById('entry-title').value;
     const content = document.getElementById('entry-content').value;
 
