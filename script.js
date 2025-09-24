@@ -23,6 +23,11 @@ const newEntryForm = document.getElementById('new-entry-form');
 const logEntriesList = document.getElementById('log-entries-list');
 let currentUserId = null;
 
+const fullEntryModal = document.getElementById('full-entry-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalContent = document.getElementById('modal-content');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+
 // Listen for authentication state changes.
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -57,7 +62,10 @@ const renderEntries = (entries) => {
     logEntriesList.innerHTML = '';
     entries.forEach(entry => {
         const entryDiv = document.createElement('div');
-        entryDiv.className = 'bg-gray-100 p-4 rounded-xl shadow-sm space-y-2';
+        entryDiv.dataset.id = entry.id;
+        entryDiv.dataset.title = entry.title; 
+        entryDiv.dataset.content = entry.content;
+        entryDiv.className = 'entry-card cursor-pointer bg-gray-100 p-4 rounded-xl shadow-sm space-y-2';
         entryDiv.innerHTML = `
             <h3 class="text-lg font-semibold text-gray-800">${entry.title}</h3>
             <p class="text-sm text-gray-600">${entry.content}</p>
@@ -67,6 +75,16 @@ const renderEntries = (entries) => {
     });
 };
 
+// Listener for clicks on log entries 
+logEntriesList.addEventListener('click', async (event) => {
+    const entryCard = event.target.closest('.entry-card');
+    if (entryCard) {
+        modalTitle.textContent = entryCard.dataset.title;
+        modalContent.textContent = entryCard.dataset.content;
+        fullEntryModal.classList.remove('hidden');
+    }
+
+});
 
 // Function to handle saving the entry to Firestore
 const saveEntry = async (entryData) => {
@@ -116,4 +134,8 @@ newEntryForm.addEventListener('submit', async (event) => {
     console.log('Title:', title);
     console.log('Content:', content);
 
+});
+
+modalCloseBtn.addEventListener('click', () => {
+    fullEntryModal.classList.add('hidden');
 });
