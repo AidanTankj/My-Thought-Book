@@ -57,7 +57,7 @@ const renderEntries = (entries) => {
     logEntriesList.innerHTML = '';
     entries.forEach(entry => {
         const entryDiv = document.createElement('div');
-        entryDiv.className = 'bg-gray-100 p-4 rounded-xl shadow-sm space-y-2';
+        entryDiv.className = 'bg-white p-4 rounded-xl shadow-sm space-y-2 border-2';
         entryDiv.innerHTML = `
             <h3 class="text-lg font-semibold text-gray-800">${entry.title}</h3>
             <p class="text-sm text-gray-600">${entry.content}</p>
