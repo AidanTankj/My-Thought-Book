@@ -138,4 +138,5 @@ newEntryForm.addEventListener('submit', async (event) => {
 
 modalCloseBtn.addEventListener('click', () => {
     fullEntryModal.classList.add('hidden');
+    console.log('Modal closed.');
 });
