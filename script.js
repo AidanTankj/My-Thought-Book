@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 const firebaseConfig = {
 apiKey: "AIzaSyDBQ_WmZa1MPgzrObdockTMD6eL4zy12Ww",
@@ -29,6 +29,18 @@ onAuthStateChanged(auth, (user) => {
         currentUserId = user.uid;
         console.log("Authentication state changed. User ID:", currentUserId);
         
+        // Listens for existing log entries
+        const q = query(collection(db, `users/${currentUserId}/log_entries`), orderBy("timestamp", "desc"));
+
+        onSnapshot(q, (snapshot) => {
+            const entries = [];
+            snapshot.forEach((doc) => {
+                entries.push({ id: doc.id, ...doc.data() });
+            });
+
+            console.log("Retrieved new data:", entries);
+        });
+
     } else {
         // User is signed out. Anonymous sign-in.
         signInAnonymously(auth).then(() => {
