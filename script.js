@@ -68,7 +68,7 @@ const renderEntries = (entries) => {
         entryDiv.className = 'entry-card cursor-pointer bg-gray-100 p-4 rounded-xl shadow-sm space-y-2';
         entryDiv.innerHTML = `
             <h3 class="text-lg font-semibold text-gray-800">${entry.title}</h3>
-            <p class="text-sm text-gray-600">${entry.content}</p>
+            <p class="text-sm text-gray-600 truncate max-h-[22px]">${entry.content}</p>
             <span class="text-xs text-gray-400 block">${new Date(entry.timestamp.seconds * 1000).toLocaleString()}</span>
         `;
         logEntriesList.appendChild(entryDiv);

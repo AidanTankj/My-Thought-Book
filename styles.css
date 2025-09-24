@@ -1,0 +1,101 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    transition: background-color 0.3s ease;
+    min-height: screen;
+    padding: 32px;
+}
+.content-container {
+    max-width: 896px;
+    margin: 0 auto 0 auto;
+    
+}
+.container-card {
+    background-color: #ffffff;
+    border-radius: 2.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+}
+.entry-card {
+    background-color: #f9fafb;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border: 1px solid #e5e7eb;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.entry-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.input-field, textarea {
+    border: 1px solid #d1d5db48;
+    border-bottom: 2px solid #dddddd;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-field:focus, textarea:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 2px rgba(160, 160, 160, 0.541);
+}
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: #ffffff;
+    transition: background-color 0.2s ease;
+}
+.btn-primary {
+    background-color: #ff5e49;
+}
+.btn-primary:hover {
+    background-color: #ff8465;
+}
+.btn-danger {
+    background-color: #ef4444;
+}
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+.btn-secondary {
+    background-color: #6b7280;
+}
+.btn-secondary:hover {
+    background-color: #4b5563;
+}
+img.attachment-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    border: 1px solid #d1d5db;
+}
+.message-box {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: white;
+    z-index: 100;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.message-box.show {
+    display: block;
+    opacity: 1;
+}
+.message-box.success {
+    background-color: #10b981;
+}
+.message-box.error {
+    background-color: #ef4444;
+}
