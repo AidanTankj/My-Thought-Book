@@ -59,7 +59,7 @@ const saveEntry = async (entryData) => {
 
 
 // Add an event listener to the form's 'submit' event
-newEntryForm.addEventListener('submit', (event) => {
+newEntryForm.addEventListener('submit', async (event) => {
     // Prevent the browser from refreshing the page when submit button pressed
     event.preventDefault();
 
@@ -72,6 +72,15 @@ newEntryForm.addEventListener('submit', (event) => {
         console.log('Cannot save an empty entry.');
         return;
     }
+
+    const entryData = {
+        title: title,
+        content: content,
+        timestamp: new Date()
+    };
+
+    await saveEntry(entryData);
+    newEntryForm.reset();
 
     console.log('Form Submitted!');
     console.log('Title:', title);
