@@ -5,6 +5,7 @@ import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "ht
 const firebaseConfig = {
 apiKey: "AIzaSyDBQ_WmZa1MPgzrObdockTMD6eL4zy12Ww",
 authDomain: "my-thought-book.firebaseapp.com",
+databaseURL: "https://my-thought-book-default-rtdb.asia-southeast1.firebasedatabase.app",
 projectId: "my-thought-book",
 storageBucket: "my-thought-book.firebasestorage.app",
 messagingSenderId: "352011418068",
