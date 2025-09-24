@@ -11,30 +11,39 @@
 </head>
 
 <body>
-    <div class="container-card">
+    <div class="content-container space-y-8">
         <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center">My Thought Book</h1>
-        <p class="text-lg text-gray-500 mb-6 text-center">My personal space for all that goes</p>
-        <form id="new-entry-form" class="space-y-4">
-            <div>
-                <!-- (for , id) Label - input link identifier -->
-                <!-- (block) Element display option occupying the full width -->
-                <label for="entry-title" class="block text-sm font-bold text-gray-700">Title</label>
-                <input type="text" id="entry-title" placeholder="A new thought or task..." class="input-field mt-1">
-            </div>
-            <div>
-                <label for="entry-content" class="block text-sm font-bold text-gray-700">Entry</label>
-                <textarea id="entry-content" rows="4" placeholder="Write your thoughts here..." class="input-field mt-1"></textarea>
-            </div>
-            <div class="flex justify-end space-x-2">
-                <button type="submit" class="btn btn-primary">Add Entry</button>
-                <button type="reset" class="btn btn-secondary">Clear</button>
-            </div>
-        </form>
+        <p class="text-lg text-gray-500 mb-6 !mt-0 text-center">My personal space for all that goes</p>
+        <div class="container-card">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">New Entry</h2>
+            <form id="new-entry-form" class="space-y-4">
+                <div>
+                    <!-- (for , id) Label - input link identifier -->
+                    <!-- (block) Element display option occupying the full width -->
+                    <label for="entry-title" class="block text-sm font-medium text-gray-700">Title</label>
+                    <input type="text" id="entry-title" placeholder="A new thought or task..." class="input-field mt-1">
+                </div>
+                <div>
+                    <label for="entry-content" class="block text-sm font-medium text-gray-700">Entry</label>
+                    <textarea id="entry-content" rows="4" placeholder="Write your thoughts here..." class="input-field mt-1"></textarea>
+                </div>
+                <div class="flex justify-end space-x-2">
+                    <button type="submit" class="btn btn-primary">Add Entry</button>
+                    <button type="reset" class="btn btn-secondary">Clear</button>
+                </div>
+            </form>
 
-        <div id="log-entries-list" class="space-y-4">
-            <p class="text-center text-gray-400">Your mind is empty. Create a thought above.</p>
+        </div>
+
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Recent Entries</h2>
+            <div id="log-entries-list" class="mt-4 space-y-4">
+                <p class="text-center text-gray-400">Your mind is empty. Create a thought above.</p>
+            </div>
         </div>
     </div>
+    
+
 
     <!-- Script at the end of the body to ensure DOM is loaded first -->
     <script type="module" src="script.js"></script>
