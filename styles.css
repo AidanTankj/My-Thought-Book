@@ -34,13 +34,13 @@ body {
 }
 .input-field:focus, textarea:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    border-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 3px rgba(160, 160, 160, 0.541);
 }
 .btn {
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #ffffff;
     transition: background-color 0.2s ease;
 }
