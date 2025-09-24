@@ -59,6 +59,7 @@ const saveEntry = async (entryData) => {
 
 
 // Add an event listener to the form's 'submit' event
+// (async, await) Requires both to make code wait
 newEntryForm.addEventListener('submit', async (event) => {
     // Prevent the browser from refreshing the page when submit button pressed
     event.preventDefault();
