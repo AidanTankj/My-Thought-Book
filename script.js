@@ -19,7 +19,7 @@ const auth = getAuth(app);
 
 // Get a reference to the form element
 const newEntryForm = document.getElementById('new-entry-form');
-
+const logEntriesList = document.getElementById('log-entries-list');
 let currentUserId = null;
 
 // Listen for authentication state changes.
@@ -39,6 +39,7 @@ onAuthStateChanged(auth, (user) => {
             });
 
             console.log("Retrieved new data:", entries);
+            renderEntries(entries);
         });
 
     } else {
@@ -50,6 +51,21 @@ onAuthStateChanged(auth, (user) => {
         });
     }
 });
+
+const renderEntries = (entries) => {
+    logEntriesList.innerHTML = '';
+    entries.forEach(entry => {
+        const entryDiv = document.createElement('div');
+        entryDiv.className = 'bg-gray-100 p-4 rounded-xl shadow-sm space-y-2';
+        entryDiv.innerHTML = `
+            <h3 class="text-lg font-semibold text-gray-800">${entry.title}</h3>
+            <p class="text-sm text-gray-600">${entry.content}</p>
+            <span class="text-xs text-gray-400 block">${new Date(entry.timestamp.seconds * 1000).toLocaleString()}</span>
+        `;
+        logEntriesList.appendChild(entryDiv);
+    });
+};
+
 
 // Function to handle saving the entry to Firestore
 const saveEntry = async (entryData) => {
