@@ -19,7 +19,7 @@ body {
 }
 .entry-card {
     cursor: pointer;
-    background-color: #eeeeee;
+    background-color: #fdd5c8;
     border-radius: 0.75rem;
     padding: 1rem;
     margin-top: 1rem;
@@ -41,8 +41,8 @@ body {
 }
 .input-field:focus, textarea:focus {
     outline: none;
-    border-color: rgba(255, 255, 255, 0);
-    box-shadow: 0 0 0 2px rgba(160, 160, 160, 0.541);
+    border-color: rgba(252, 135, 89, 0.644);
+    box-shadow: 0 0 0 1px rgba(252, 135, 89, 0.616);
 }
 .btn {
     padding: 0.5rem 1rem;
