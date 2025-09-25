@@ -65,7 +65,7 @@ const renderEntries = (entries) => {
         entryDiv.dataset.id = entry.id;
         entryDiv.dataset.title = entry.title; 
         entryDiv.dataset.content = entry.content;
-        entryDiv.className = 'entry-card cursor-pointer bg-gray-100 p-4 rounded-xl shadow-sm space-y-2';
+        entryDiv.className = 'entry-card shadow-sm space-y-2';
         entryDiv.innerHTML = `
             <h3 class="text-lg font-semibold text-gray-800">${entry.title}</h3>
             <p class="text-sm text-gray-600 truncate max-h-[22px]">${entry.content}</p>
