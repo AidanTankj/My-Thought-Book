@@ -46,7 +46,9 @@ onAuthStateChanged(auth, (user) => {
 
             console.log("Retrieved new data:", entries);
             renderEntries(entries);
+            setTimeout(1000);
             renderLoading();
+            
 
 
             if (snapshot.empty) {
