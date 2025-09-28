@@ -38,19 +38,16 @@ onAuthStateChanged(auth, (user) => {
         // Listens for existing log entries
         const q = query(collection(db, `users/${currentUserId}/log_entries`), orderBy("timestamp", "desc"));
         
-        onSnapshot(q, (snapshot) => {
+        onSnapshot(q, async (snapshot) => {
             const entries = [];
-            snapshot.forEach((doc) => {
+            await snapshot.forEach((doc) => {
                 entries.push({ id: doc.id, ...doc.data() });
             });
-
             console.log("Retrieved new data:", entries);
             renderEntries(entries);
             setTimeout(1000);
             renderLoading();
             
-
-
             if (snapshot.empty) {
                 console.log("No entries found.");
                 logEntriesList.innerHTML = `
