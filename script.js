@@ -66,12 +66,12 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
+
+// Function to handle loading screen and reveal content
 const renderLoading = async () => {
-    const header = document.getElementById('header');
     const userContent = document.getElementById('user-content');
     const loadingContainer = document.getElementById('loading-container');
 
-    header.classList.remove('mt-[20%]');
     loadingContainer.classList.add('hidden');
     userContent.classList.remove('hidden');
 
