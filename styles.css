@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap');
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f3f4f6;
@@ -5,6 +7,12 @@ body {
     min-height: screen;
     padding: 32px;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ysabeau Office', sans-serif;
+    color: #111827;
+}
+
 .content-container {
     max-width: 896px;
     margin: 0 auto 0 auto;
@@ -112,7 +120,7 @@ img.attachment-image {
     justify-content: center;
     text-align: center;
     padding: 20px;
-    padding-top: 5%;
+    margin-top: 25vh;
 }
 
 .lotus-wrapper {
@@ -133,10 +141,10 @@ img.attachment-image {
 
 
 .loading-text {
-    font-size: 1.2em;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
-    font-weight: 300;
+    font-size: 1.4em;
+    font-weight: 500;
+    font-family: "Ysabeau Office", sans-serif;
+    margin-bottom: 25px;
     opacity: 0.9;
 }
 
