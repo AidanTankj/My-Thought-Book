@@ -12,44 +12,59 @@
 
 <body>
     <div class="content-container space-y-8">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center">My Thought Book</h1>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center mt-[20%]" id="header">My Thought Book</h1>
         <p class="text-lg text-gray-500 mb-6 !mt-0 text-center">My personal space for all that goes</p>
-        <div class="container-card">
-            <h2 class="text-2xl font-bold mb-4 text-gray-800">New Entry</h2>
-            <form id="new-entry-form" class="space-y-4">
-                <div>
-                    <!-- (for , id) Label - input link identifier -->
-                    <!-- (block) Element display option occupying the full width -->
-                    <label for="entry-title" class="block text-sm font-medium text-gray-700">Title</label>
-                    <input type="text" id="entry-title" placeholder="A new thought or task..." class="input-field mt-1">
-                </div>
-                <div>
-                    <label for="entry-content" class="block text-sm font-medium text-gray-700">Entry</label>
-                    <textarea id="entry-content" rows="4" placeholder="Write your thoughts here..." class="input-field mt-1"></textarea>
-                </div>
-                <div class="flex justify-end space-x-2">
-                    <button type="submit" class="btn btn-primary">Add Entry</button>
-                    <button type="reset" class="btn btn-secondary">Clear</button>
-                </div>
-            </form>
 
-        </div>
-
-        <div>
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 ml-4">Recent Entries</h2>
-            <div id="log-entries-list" class="mt-4 space-y-4">
-                <p class="text-center text-gray-400">Your mind is empty. Create a thought above.</p>
+        <div class="loading-container" id="loading-container">
+            <div class="lotus-wrapper">
+                <img src="lotus.png" alt="Lotus Icon" class="lotus-icon">
+            </div>
+            <div class="loading-text">LOADING...</div>
+            <div class="loading-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </div>
 
-    <div id="full-entry-modal" class="fixed inset-0 bg-black bg-opacity-50 !mt-0 hidden flex items-center justify-center p-4">
-        <div class="bg-white p-6 rounded-3xl shadow-lg w-full max-w-xl max-h-full overflow-y-auto relative">
-            <button id="modal-close-btn" class="absolute top-3 right-5 text-gray-400 hover:text-gray-700 text-3xl font-bold">&times;</button>
-            <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-2"></h3>
-            <p id="modal-content" class="text-gray-700 whitespace-pre-wrap"></p>
+        <div class="hidden" id="user-content">
+            <div class="container-card">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">New Entry</h2>
+                <form id="new-entry-form" class="space-y-4">
+                    <div>
+                        <!-- (for , id) Label - input link identifier -->
+                        <!-- (block) Element display option occupying the full width -->
+                        <label for="entry-title" class="block text-sm font-medium text-gray-700">Title</label>
+                        <input type="text" id="entry-title" placeholder="A new thought or task..." class="input-field mt-1">
+                    </div>
+                    <div>
+                        <label for="entry-content" class="block text-sm font-medium text-gray-700">Entry</label>
+                        <textarea id="entry-content" rows="4" placeholder="Write your thoughts here..." class="input-field mt-1"></textarea>
+                    </div>
+                    <div class="flex justify-end space-x-2">
+                        <button type="submit" class="btn btn-primary">Add Entry</button>
+                        <button type="reset" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 ml-4">Recent Entries</h2>
+                <div id="log-entries-list" class="mt-4 space-y-4">
+                    <p class="text-center text-gray-400">Your mind is empty. Create a thought above.</p>
+                </div>
+            </div>
+
+            <div id="full-entry-modal" class="fixed inset-0 bg-black bg-opacity-50 !mt-0 hidden flex items-center justify-center p-4">
+                <div class="bg-white p-6 rounded-3xl shadow-lg w-full max-w-xl max-h-full overflow-y-auto relative">
+                    <button id="modal-close-btn" class="absolute top-3 right-5 text-gray-400 hover:text-gray-700 text-3xl font-bold">&times;</button>
+                    <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-2"></h3>
+                    <p id="modal-content" class="text-gray-700 whitespace-pre-wrap"></p>
+                </div>
+            </div>
         </div>
-    </div>
-    
+
 
 
     </div>

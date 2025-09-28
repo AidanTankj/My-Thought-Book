@@ -100,3 +100,75 @@ img.attachment-image {
 .message-box.error {
     background-color: #ef4444;
 }
+
+
+
+/* Responsive Design */
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    padding-top: 5%;
+}
+
+.lotus-wrapper {
+    margin-bottom: 30px; 
+    background: #000000;
+    padding: 5px;
+    border-radius: 20%;
+}
+
+
+ .lotus-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    opacity: 0.8;
+    animation: breathe 2s ease-in-out infinite alternate;
+}
+
+
+.loading-text {
+    font-size: 1.2em;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.loading-dots {
+    display: flex;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #000000;
+    border-radius: 50%;
+    margin: 0 5px;
+    animation: bounce 1.2s infinite ease-in-out; 
+    opacity: 0.9;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s; 
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Animations */
+@keyframes breathe {
+    0% { opacity: 0.3; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); } 
+}
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+}

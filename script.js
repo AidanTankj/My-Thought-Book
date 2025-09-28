@@ -37,7 +37,7 @@ onAuthStateChanged(auth, (user) => {
         
         // Listens for existing log entries
         const q = query(collection(db, `users/${currentUserId}/log_entries`), orderBy("timestamp", "desc"));
-
+        renderLoading();
         onSnapshot(q, (snapshot) => {
             const entries = [];
             snapshot.forEach((doc) => {
@@ -57,6 +57,17 @@ onAuthStateChanged(auth, (user) => {
         });
     }
 });
+
+const renderLoading = () => {
+    const header = document.getElementById('header');
+    const userContent = document.getElementById('user-content');
+    const loadingContainer = document.getElementById('loading-container');
+
+    header.classList.remove('mt-[20%]');
+    loadingContainer.classList.add('hidden');
+    userContent.classList.remove('hidden');
+
+}
 
 const renderEntries = (entries) => {
     logEntriesList.innerHTML = '';
