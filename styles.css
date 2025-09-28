@@ -121,6 +121,7 @@ img.attachment-image {
     text-align: center;
     padding: 20px;
     margin-top: 25vh;
+    transition: opacity ease-in-out 0.3s;
 }
 
 .lotus-wrapper {

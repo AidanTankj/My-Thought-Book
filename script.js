@@ -72,6 +72,8 @@ const renderLoading = async () => {
     const userContent = document.getElementById('user-content');
     const loadingContainer = document.getElementById('loading-container');
 
+    loadingContainer.style.opacity = 0;
+    await new Promise(resolve => setTimeout(resolve, 300)); // Wait for the fade-out transition
     loadingContainer.classList.add('hidden');
     userContent.classList.remove('hidden');
 
