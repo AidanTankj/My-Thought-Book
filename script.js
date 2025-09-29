@@ -27,6 +27,7 @@ const fullEntryModal = document.getElementById('full-entry-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalContent = document.getElementById('modal-content');
 const modalCloseBtn = document.getElementById('modal-close-btn');
+const containerCard = document.getElementById('container-card');
 
 // Listen for authentication state changes.
 onAuthStateChanged(auth, (user) => {
@@ -95,6 +96,17 @@ const renderEntries = (entries) => {
         logEntriesList.appendChild(entryDiv);
     });
 };
+
+newEntryForm.addEventListener('click', async (event) => {
+    const contentInput = document.getElementById('entry-content'); 
+    const formButtons = document.getElementById('form-buttons');
+    contentInput.classList.remove('hidden');
+    formButtons.classList.remove('hidden');
+    containerCard.classList.remove('max-h-38', 'overflow-hidden');
+
+});
+
+
 
 // Listener for clicks on log entries 
 logEntriesList.addEventListener('click', async (event) => {
