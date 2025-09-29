@@ -101,8 +101,8 @@ newEntryForm.addEventListener('click', async (event) => {
     const contentInput = document.getElementById('entry-content'); 
     const formButtons = document.getElementById('form-buttons');
 
-    containerCard.classList.remove('max-h-38', 'overflow-hidden, is-expanded');
-    containerCard.classList.add('max-h-full');
+    containerCard.classList.remove('max-h-38', 'overflow-hidden');
+    containerCard.classList.add('max-h-full', 'is-expanded');
     contentInput.classList.remove('hidden');
     formButtons.classList.remove('hidden');
 
