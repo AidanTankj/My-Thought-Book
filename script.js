@@ -101,10 +101,10 @@ newEntryForm.addEventListener('click', async (event) => {
     const contentInput = document.getElementById('entry-content'); 
     const formButtons = document.getElementById('form-buttons');
 
-    containerCard.classList.remove('max-h-38', 'overflow-hidden');
+    containerCard.classList.remove('max-h-38', 'overflow-hidden, is-expanded');
+    containerCard.classList.add('max-h-full');
     contentInput.classList.remove('hidden');
     formButtons.classList.remove('hidden');
-    containerCard.classList.remove('is-expanded');
 
 });
 
@@ -117,7 +117,7 @@ document.addEventListener('click', (event) => {
             contentInput.classList.add('hidden');
             formButtons.classList.add('hidden');
             containerCard.classList.add('max-h-38', 'overflow-hidden');
-            containerCard.classList.remove('is-expanded');
+            containerCard.classList.remove('max-w-full', 'is-expanded');
         }
     }
 });
