@@ -100,13 +100,27 @@ const renderEntries = (entries) => {
 newEntryForm.addEventListener('click', async (event) => {
     const contentInput = document.getElementById('entry-content'); 
     const formButtons = document.getElementById('form-buttons');
+
+    containerCard.classList.remove('max-h-38', 'overflow-hidden');
     contentInput.classList.remove('hidden');
     formButtons.classList.remove('hidden');
-    containerCard.classList.remove('max-h-38', 'overflow-hidden');
+    containerCard.classList.remove('is-expanded');
 
 });
 
+// Listener for clicks outside the entry card to collapse it
+document.addEventListener('click', (event) => {
+    if (containerCard.classList.contains('is-expanded')) {
+        const isClickInsideCard = event.target.closest('#container-card');
 
+        if (!isClickInsideCard) {
+            contentInput.classList.add('hidden');
+            formButtons.classList.add('hidden');
+            containerCard.classList.add('max-h-38', 'overflow-hidden');
+            containerCard.classList.remove('is-expanded');
+        }
+    }
+});
 
 // Listener for clicks on log entries 
 logEntriesList.addEventListener('click', async (event) => {
