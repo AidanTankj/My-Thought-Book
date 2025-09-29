@@ -28,6 +28,8 @@ const modalTitle = document.getElementById('modal-title');
 const modalContent = document.getElementById('modal-content');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const containerCard = document.getElementById('container-card');
+const contentInput = document.getElementById('entry-content'); 
+const formButtons = document.getElementById('form-buttons');
 
 // Listen for authentication state changes.
 onAuthStateChanged(auth, (user) => {
@@ -98,8 +100,6 @@ const renderEntries = (entries) => {
 };
 
 newEntryForm.addEventListener('click', async (event) => {
-    const contentInput = document.getElementById('entry-content'); 
-    const formButtons = document.getElementById('form-buttons');
 
     containerCard.classList.remove('max-h-38', 'overflow-hidden');
     containerCard.classList.add('max-h-full', 'is-expanded');
