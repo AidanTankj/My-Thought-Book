@@ -24,8 +24,8 @@ const logEntriesList = document.getElementById('log-entries-list');
 let currentUserId = null;
 
 const fullEntryModal = document.getElementById('full-entry-modal');
-const modalTitle = document.getElementById('modal-title');
-const modalContent = document.getElementById('modal-content');
+const editableModalTitle = document.getElementById('modal-entry-title');
+const editableModalContent = document.getElementById('modal-entry-content');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const containerCard = document.getElementById('container-card');
 const contentInput = document.getElementById('entry-content'); 
@@ -127,15 +127,44 @@ document.addEventListener('click', (event) => {
     }
 });
 
-// Listener for clicks on log entries 
+const autoSaveEntry = async (docId, field, value) => {
+    if (!currentUserId || !docId) return;
+
+    // Use computed property names to set the field dynamically: 
+    // { title: 'new value' } or { content: 'new value' }
+    const updateData = {
+        [field]: value
+    };
+
+    try {
+        // Create a reference to the specific document
+        const docRef = doc(db, `users/${currentUserId}/log_entries`, docId);
+        
+        // Update the document in Firestore
+        await updateDoc(docRef, updateData);
+        console.log(`Autosaved field ${field} for entry ${docId}`);
+    } catch (error) {
+        console.error("Error during autosave:", error);
+    }
+};
+
 logEntriesList.addEventListener('click', async (event) => {
     const entryCard = event.target.closest('.entry-card');
     if (entryCard) {
-        modalTitle.textContent = entryCard.dataset.title;
-        modalContent.textContent = entryCard.dataset.content;
-        fullEntryModal.classList.remove('hidden');
+        editableModalTitle.textContent = entryCard.dataset.title;
+        editableModalContent.textContent = entryCard.dataset.content;
+        editableModalContent.dataset.id = entryCard.dataset.id; // Store the document ID for autosave
     }
+});
 
+editableModalTitle.addEventListener('input', (event) => {
+    const docId = editableModalContent.dataset.id;
+    autoSaveEntry(docId, 'title', event.target.value);
+});
+
+editableModalContent.addEventListener('input', (event) => {
+    const docId = editableModalContent.dataset.id;
+    autoSaveEntry(docId, 'content', event.target.value);
 });
 
 // Function to handle saving the entry to Firestore
