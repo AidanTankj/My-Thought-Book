@@ -151,20 +151,20 @@ const autoSaveEntry = async (docId, field, value) => {
 logEntriesList.addEventListener('click', async (event) => {
     const entryCard = event.target.closest('.entry-card');
     if (entryCard) {
-        editableModalTitle.textContent = entryCard.dataset.title;
-        editableModalContent.textContent = entryCard.dataset.content;
-        editableModalContent.dataset.id = entryCard.dataset.id; // Store the document ID for autosave
+        editableModalTitle.value = entryCard.dataset.title;
+        editableModalContent.value = entryCard.dataset.content;
+        editableModalTitle.dataset.id = entryCard.dataset.id; // Store the document ID for autosave
         fullEntryModal.classList.remove('hidden');
     }
 });
 
 editableModalTitle.addEventListener('input', (event) => {
-    const docId = editableModalContent.dataset.id;
+    const docId = editableModalTitle.dataset.id;
     autoSaveEntry(docId, 'title', event.target.value);
 });
 
 editableModalContent.addEventListener('input', (event) => {
-    const docId = editableModalContent.dataset.id;
+    const docId = editableModalTitle.dataset.id;
     autoSaveEntry(docId, 'content', event.target.value);
 });
 
