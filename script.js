@@ -108,25 +108,6 @@ newEntryForm.addEventListener('click', async (event) => {
 
 });
 
-// Listener for clicks outside the entry card to collapse it
-document.addEventListener('click', (event) => {
-    if (containerCard.classList.contains('is-expanded')) {
-        const isClickInsideCard = event.target.closest('#container-card');
-
-        if (!isClickInsideCard) {
-            contentInput.classList.add('hidden');
-            formButtons.classList.add('hidden');
-            containerCard.classList.add('max-h-38', 'overflow-hidden');
-            containerCard.classList.remove('max-w-full', 'is-expanded');
-        }
-    } else if (!fullEntryModal.classList.contains('hidden')) {
-        const isClickInsideModal = event.target.closest('#modal-content-container');
-        if (!isClickInsideModal) {
-            fullEntryModal.classList.add('hidden');
-        }
-    }
-});
-
 const autoSaveEntry = async (docId, field, value) => {
     if (!currentUserId || !docId) return;
 
@@ -224,4 +205,27 @@ newEntryForm.addEventListener('submit', async (event) => {
 modalCloseBtn.addEventListener('click', () => {
     fullEntryModal.classList.add('hidden');
     console.log('Modal closed.');
+});
+
+// Listener for clicks outside the entry card to collapse it
+document.addEventListener('click', (event) => {
+    if (containerCard.classList.contains('is-expanded')) {
+        const isClickInsideCard = event.target.closest('#container-card');
+
+        if (!isClickInsideCard) {
+            contentInput.classList.add('hidden');
+            formButtons.classList.add('hidden');
+            containerCard.classList.add('max-h-38', 'overflow-hidden');
+            containerCard.classList.remove('max-w-full', 'is-expanded');
+        }
+    } 
+});
+
+fullEntryModal.addEventListener('click', (event) => {
+    if (!fullEntryModal.classList.contains('hidden')) {
+        const isClickInsideModal = event.target.closest('#modal-content-container');
+        if (!isClickInsideModal) {
+            fullEntryModal.classList.add('hidden');
+        }
+    }
 });
