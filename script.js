@@ -132,18 +132,18 @@ const autoSaveEntry = async (docId, field, value) => {
 logEntriesList.addEventListener('click', async (event) => {
     const entryCard = event.target.closest('.entry-card');
     if (entryCard) {
-        console.log('Entry card found');
         editableModalTitle.value = entryCard.dataset.title;
         editableModalContent.value = entryCard.dataset.content;
-        console.log('Modal title set ');
         editableModalTitle.dataset.id = entryCard.dataset.id; // Store the document ID for autosave
+        console.log('Document ID set for autosave:', editableModalTitle.dataset.id);
+        console.log('entrycarddatasetid:', entryCard.dataset.id);
         fullEntryModal.classList.remove('hidden');
-        console.log('Modal hidden');
     }
 });
 
 editableModalTitle.addEventListener('input', (event) => {
     const docId = editableModalTitle.dataset.id;
+    console.log('Document ID for title autosave:', docId);
     autoSaveEntry(docId, 'title', event.target.value);
 });
 
