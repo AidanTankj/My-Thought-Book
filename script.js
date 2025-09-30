@@ -24,8 +24,8 @@ const logEntriesList = document.getElementById('log-entries-list');
 let currentUserId = null;
 
 const fullEntryModal = document.getElementById('full-entry-modal');
-const editableModalTitle = document.getElementById('modal-entry-title');
-const editableModalContent = document.getElementById('modal-entry-content');
+const editableModalTitle = document.getElementById('editable-modal-title');
+const editableModalContent = document.getElementById('editable-modal-content');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const containerCard = document.getElementById('container-card');
 const contentInput = document.getElementById('entry-content'); 
