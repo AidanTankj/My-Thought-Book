@@ -154,6 +154,7 @@ logEntriesList.addEventListener('click', async (event) => {
         editableModalTitle.textContent = entryCard.dataset.title;
         editableModalContent.textContent = entryCard.dataset.content;
         editableModalContent.dataset.id = entryCard.dataset.id; // Store the document ID for autosave
+        fullEntryModal.classList.remove('hidden');
     }
 });
 
