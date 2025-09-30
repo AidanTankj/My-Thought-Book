@@ -119,6 +119,11 @@ document.addEventListener('click', (event) => {
             containerCard.classList.add('max-h-38', 'overflow-hidden');
             containerCard.classList.remove('max-w-full', 'is-expanded');
         }
+    } else if (!fullEntryModal.classList.contains('hidden')) {
+        const isClickInsideModal = event.target.closest('#modal-content-container');
+        if (!isClickInsideModal) {
+            fullEntryModal.classList.add('hidden');
+        }
     }
 });
 
