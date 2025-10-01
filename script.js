@@ -183,7 +183,8 @@ logEntriesList.addEventListener('click', async (event) => {
         }
         editableModalTitle.dataset.id = entryCard.dataset.id; // Store the document ID for autosave
         fullEntryModal.classList.remove('hidden');
-        fullEntryModal.style.opacity = 100;
+        fullEntryModal.classList.remove('opacity-0');
+        fullEntryModal.classList.add('opacity-100');
     }
 });
 
@@ -267,9 +268,11 @@ fullEntryModal.addEventListener('click', async (event) => {
     if (!fullEntryModal.classList.contains('hidden')) {
         const isClickInsideModal = event.target.closest('#modal-content-container');
         if (!isClickInsideModal) {
-            fullEntryModal.style.opacity = 0;
+            fullEntryModal.classList.remove('opacity-100');
+            fullEntryModal.classList.add('opacity-0');
             await new Promise(resolve => setTimeout(resolve, 200));
             fullEntryModal.classList.add('hidden');
+
         }
     }
 });
