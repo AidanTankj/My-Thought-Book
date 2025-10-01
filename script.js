@@ -84,14 +84,6 @@ $(document).ready(function() {
             ['color', ['color']],
 
         ],
-        keyMap: {
-            pc: {
-                'ENTER': 'insertLineBreak' 
-            },
-            mac: {
-                'ENTER': 'insertLineBreak'
-            }
-        },
         callbacks: {
             onChange: function(contents, $editable) {
                 // Manually trigger the autosave logic for the content field
