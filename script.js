@@ -70,6 +70,26 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
+$(document).ready(function() {
+    $('#editable-modal-content').summernote({
+        placeholder: 'Start editing your thought...',
+        tabsize: 2,
+        height: 250,
+        callbacks: {
+            onChange: function(contents, $editable) {
+                // Manually trigger the autosave logic for the content field
+                const docId = editableModalTitle.dataset.id;
+                
+                // Only save if the modal is currently open and we have an ID
+                if (docId && !fullEntryModal.classList.contains('hidden')) {
+                     autoSaveEntry(docId, 'content', contents);
+                }
+            }
+        }
+    });
+});
+
+
 
 // Function to handle loading screen and reveal content
 const renderLoading = async () => {
@@ -83,14 +103,6 @@ const renderLoading = async () => {
 
 }
 
-tinymce.init({
-    selector: '#editable-modal-content', 
-    menubar: false,
-    plugins: 'lists link code',
-    toolbar: 'bold italic underline | bullist numlist | link | code',
-    height: 250
-});
-
 const renderEntries = (entries) => {
     logEntriesList.innerHTML = '';
     entries.forEach(entry => {
@@ -99,6 +111,10 @@ const renderEntries = (entries) => {
         entryDiv.dataset.title = entry.title; 
         entryDiv.dataset.content = entry.content;
         entryDiv.className = 'entry-card shadow-sm space-y-2';
+
+        const docContent = entry.content || ''; 
+        const plainTextPreview = docContent.replace(/<[^>]*>/g, '').substring(0, 50) + (docContent.length > 50 ? '...' : '');
+
         entryDiv.innerHTML = `
             <h3 class="text-lg font-semibold text-gray-800">${entry.title}</h3>
             <p class="text-sm text-gray-600 truncate max-h-[22px]">${entry.content}</p>
@@ -142,7 +158,12 @@ logEntriesList.addEventListener('click', async (event) => {
     const entryCard = event.target.closest('.entry-card');
     if (entryCard) {
         editableModalTitle.value = entryCard.dataset.title;
-        editableModalContent.value = entryCard.dataset.content;
+        if ($('#editable-modal-content').data('summernote')) {
+            $('#editable-modal-content').summernote('code', entryCard.dataset.content);
+        } else {
+            // Fallback for the initial load if Summernote isn't ready
+            editableModalContent.value = entryCard.dataset.content;
+        }
         editableModalTitle.dataset.id = entryCard.dataset.id; // Store the document ID for autosave
         console.log('Document ID set for autosave:', editableModalTitle.dataset.id);
         console.log('entrycarddatasetid:', entryCard.dataset.id);
@@ -157,10 +178,6 @@ editableModalTitle.addEventListener('input', (event) => {
     autoSaveEntry(docId, 'title', event.target.value);
 });
 
-editableModalContent.addEventListener('input', (event) => {
-    const docId = editableModalTitle.dataset.id;
-    autoSaveEntry(docId, 'content', event.target.value);
-});
 
 // Function to handle saving the entry to Firestore
 const saveEntry = async (entryData) => {
