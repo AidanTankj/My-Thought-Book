@@ -76,7 +76,7 @@ $(document).ready(function() {
         tabsize: 2,
         height: 250,
         toolbar: [
-            ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+            ['style', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
             ['lists', ['ul']],
             ['insert', ['picture']],
             ['fontname', ['fontname']],
