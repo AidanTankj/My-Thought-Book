@@ -26,6 +26,9 @@ h1 {
     border: 1px solid #e5e7eb;
     transition: max-height 0.2 ease;
 }
+#modal-content-container {
+    transition: opacity 0.2 ease-in-out;
+}
 .entry-card {
     cursor: pointer;
     background-color: #fdd5c8;

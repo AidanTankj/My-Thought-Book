@@ -30,6 +30,7 @@ const modalCloseBtn = document.getElementById('modal-close-btn');
 const containerCard = document.getElementById('container-card');
 const contentInput = document.getElementById('entry-content'); 
 const formButtons = document.getElementById('form-buttons');
+const modalContentContainer = document.getElementById('modal-content-container');
 
 // Listen for authentication state changes.
 onAuthStateChanged(auth, (user) => {
@@ -146,6 +147,7 @@ logEntriesList.addEventListener('click', async (event) => {
         console.log('Document ID set for autosave:', editableModalTitle.dataset.id);
         console.log('entrycarddatasetid:', entryCard.dataset.id);
         fullEntryModal.classList.remove('hidden');
+        modalContentContainer.style.opacity = 100;
     }
 });
 
@@ -229,10 +231,12 @@ document.addEventListener('click', (event) => {
     } 
 });
 
-fullEntryModal.addEventListener('click', (event) => {
+fullEntryModal.addEventListener('click', async (event) => {
     if (!fullEntryModal.classList.contains('hidden')) {
         const isClickInsideModal = event.target.closest('#modal-content-container');
         if (!isClickInsideModal) {
+            modalContentContainer.style.opacity = 0;
+            await new Promise(resolve => setTimeout(resolve, 200));
             fullEntryModal.classList.add('hidden');
         }
     }
