@@ -82,6 +82,14 @@ const renderLoading = async () => {
 
 }
 
+tinymce.init({
+    selector: '#editable-modal-content', 
+    menubar: false,
+    plugins: 'lists link code',
+    toolbar: 'bold italic underline | bullist numlist | link | code',
+    height: 250
+});
+
 const renderEntries = (entries) => {
     logEntriesList.innerHTML = '';
     entries.forEach(entry => {
