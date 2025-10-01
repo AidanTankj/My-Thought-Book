@@ -75,12 +75,29 @@ $(document).ready(function() {
         placeholder: 'Start editing your thought...',
         tabsize: 2,
         height: 250,
+        toolbar: [
+            ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+            ['lists', ['ul']],
+            ['insert', ['picture']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+
+        ],
+        keyMap: {
+            pc: {
+                'ENTER': 'insertLineBreak' 
+            },
+            mac: {
+                'ENTER': 'insertLineBreak'
+            }
+        },
         callbacks: {
             onChange: function(contents, $editable) {
                 // Manually trigger the autosave logic for the content field
                 const docId = editableModalTitle.dataset.id;
                 
-                // Only save if the modal is currently open and we have an ID
+                // save only if the modal is currently open and we have an ID
                 if (docId && !fullEntryModal.classList.contains('hidden')) {
                      autoSaveEntry(docId, 'content', contents);
                 }
@@ -165,8 +182,6 @@ logEntriesList.addEventListener('click', async (event) => {
             editableModalContent.value = entryCard.dataset.content;
         }
         editableModalTitle.dataset.id = entryCard.dataset.id; // Store the document ID for autosave
-        console.log('Document ID set for autosave:', editableModalTitle.dataset.id);
-        console.log('entrycarddatasetid:', entryCard.dataset.id);
         fullEntryModal.classList.remove('hidden');
         fullEntryModal.style.opacity = 100;
     }

@@ -112,8 +112,23 @@ img.attachment-image {
 }
 
 
+/* CSS for Summernote styles */
+.note-editor, .note-editable {
+    font-family: 'Inter', sans-serif !important; 
+}
 
-/* Responsive Design */
+.note-toolbar {
+    background-color: #ffffff; /* A darker gray */
+    border-bottom: 1px solid #d1d5db;
+}
+
+.note-btn {
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+
+/* Responsive Design for loading screen */
 
 .loading-container {
     display: flex;
