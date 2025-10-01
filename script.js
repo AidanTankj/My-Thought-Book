@@ -134,7 +134,7 @@ const renderEntries = (entries) => {
 
         entryDiv.innerHTML = `
             <h3 class="text-lg font-semibold text-gray-800">${entry.title}</h3>
-            <p class="text-sm text-gray-600 truncate max-h-[22px]">${entry.content}</p>
+            <p class="text-sm text-gray-600 truncate max-h-[22px]">${plainTextPreview}</p>
             <span class="text-xs text-gray-400 block">${new Date(entry.timestamp.seconds * 1000).toLocaleString()}</span>
         `;
         logEntriesList.appendChild(entryDiv);
