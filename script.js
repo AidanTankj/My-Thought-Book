@@ -168,7 +168,7 @@ logEntriesList.addEventListener('click', async (event) => {
         console.log('Document ID set for autosave:', editableModalTitle.dataset.id);
         console.log('entrycarddatasetid:', entryCard.dataset.id);
         fullEntryModal.classList.remove('hidden');
-        modalContentContainer.style.opacity = 100;
+        fullEntryModal.style.opacity = 100;
     }
 });
 
@@ -252,7 +252,7 @@ fullEntryModal.addEventListener('click', async (event) => {
     if (!fullEntryModal.classList.contains('hidden')) {
         const isClickInsideModal = event.target.closest('#modal-content-container');
         if (!isClickInsideModal) {
-            modalContentContainer.style.opacity = 0;
+            fullEntryModal.style.opacity = 0;
             await new Promise(resolve => setTimeout(resolve, 200));
             fullEntryModal.classList.add('hidden');
         }
