@@ -30,6 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #full-entry-modal {
     transition: all 0.2 ease-in-out;
+    opacity: 0;
 }
 .entry-card {
     cursor: pointer;

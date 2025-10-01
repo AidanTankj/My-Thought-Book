@@ -79,8 +79,6 @@ $(document).ready(function() {
             ['style', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
             ['lists', ['ul']],
             ['insert', ['picture']],
-            ['fontname', ['fontname']],
-            ['fontsize', ['fontsize']],
             ['color', ['color']],
 
         ],
@@ -175,8 +173,7 @@ logEntriesList.addEventListener('click', async (event) => {
         }
         editableModalTitle.dataset.id = entryCard.dataset.id; // Store the document ID for autosave
         fullEntryModal.classList.remove('hidden');
-        fullEntryModal.classList.remove('opacity-0');
-        fullEntryModal.classList.add('opacity-100');
+        fullEntryModal.style.opacity = 100;
     }
 });
 
@@ -260,8 +257,7 @@ fullEntryModal.addEventListener('click', async (event) => {
     if (!fullEntryModal.classList.contains('hidden')) {
         const isClickInsideModal = event.target.closest('#modal-content-container');
         if (!isClickInsideModal) {
-            fullEntryModal.classList.remove('opacity-100');
-            fullEntryModal.classList.add('opacity-0');
+            fullEntryModal.style.opacity = 0;
             await new Promise(resolve => setTimeout(resolve, 200));
             fullEntryModal.classList.add('hidden');
 
